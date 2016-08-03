@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>What Should I Read Next?</title>
-	<meta content="Discover new books to get you out of your reading rut">
+	<title>What Should I Watch Next?</title>
+	<meta content="Discover new movies to get you out of your movie rut">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-	<header>What Should I Read Next?</header>
+	<header>What Should I Watch Next?</header>
 	<main>
 		<div class="intro">
-			<p>Just finished a good book and don't know what to pick up next? Haven't read in a while and don't know where to start? Use this app to find recommendations based on your favourite books, complete with descriptions and ratings courtest of the Goodreads community.</p>
-			<p>Enter the title of one of your favourite books to discover similar works you'll love!</p>
+			<p>Just finished a good film and don't know what to tune into next? Haven't watched anything in a while and don't know where to start? Use this app to find recommendations based on your favourite movies, complete with descriptions and ratings courtesy of the Movie Database community.</p>
+			<p>Enter the title of one of your favourite movies to discover similar works you'll love!</p>
 		</div>
-		<form id="book-search">
-			<input type="text" name="title" id="title" placeholder='e.g. "The Adventures of Robinson Crusoe"' autofocus required />
-			<input type="submit" name="submit" value="Find Me New Books!">
+		<form id="movie-search">
+			<input type="text" name="title" id="title" placeholder='e.g. "My Cousin Vinny"' autofocus required />
+			<input type="submit" name="submit" value="Find Me New Movies!">
 		</form>
 		<div class="results"></div>
 		<div class="templates hidden">
-			<div class="result cover">
-				<p>
-					<span class="title"></span><br>
-					<span class="author"></span>
-				</p>
-				<img src="">
+			<div class="result overview">
+				<p class="title"></p>
+				<img src="" class="poster">
 				<p>Average Rating: <span class="rating"></span></p>
 				<button>Details</button>
 			</div>
 			<div class="result details">
 				<p><b>Description:<b> <span class="desc"></span></p>
-				<p><b>Published:</b> <span class="published"></span></p>
+				<p><b>Release Date:</b> <span class="release-date"></span></p>
 			</div>
 		</div>
 

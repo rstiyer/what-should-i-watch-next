@@ -1,22 +1,21 @@
-var devKey = 'R0y5wSMxSN8qx1bhQYEl0A';
+var devKey = 'bc7ba55be7550cede7b5277f42632cff';
 
 $(function() {
-	$('#book-search').submit(function(e) {
+	$('#movie-search').submit(function(e) {
 		e.preventDefault();
 		var userInput = $('input[name="title"]').val();
 		console.log(userInput);
-		getBook(userInput);
+		getMovie(userInput);
 	});
 });
 
-function getBook(userInput) {
+function getMovie(userInput) {
 	$.ajax({
-		url: "https://www.goodreads.com/search/index.xml",
+		url: "http://api.themoviedb.org/3/search/movie",
 		method: "GET",
 		data: {
-			q: userInput,
-			key: devKey,
-			'search[field]': 'title'
+			query: userInput,
+			api_key: devKey
 		}
 	})
 	.done(function(response) {
