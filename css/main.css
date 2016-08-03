@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+header {
+	width: 100%;
+	padding: 10px;
+	font-size: 48px;
+	text-align: center;
+	border: 2px solid black;
+}
+
+main {
+	width: 50%;
+	margin: 0 auto;
+	text-align: justify;
+}
+
+input#title {
+	width: 250px;
+}
