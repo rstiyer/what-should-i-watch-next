@@ -4,7 +4,9 @@ $(function() {
 	$('#movie-search').submit(function(e) {
 		e.preventDefault();
 		var userInput = $('input[name="title"]').val();
+		$('.results').empty();
 		getMovieRecommendations(userInput);
+		$(this)[0].reset();
 	});
 
 	$('.results').on('click', '.show-details', function() {
@@ -15,8 +17,7 @@ $(function() {
 	$('.results').on('click', '.show-overview', function() {
 		$(this).parent().toggleClass("hidden");
 		$(this).parent().prev().toggleClass("hidden");
-	})
-
+	});
 });
 
 function getMovieRecommendations(userInput) {
@@ -53,17 +54,17 @@ function getMovieRecommendations(userInput) {
 function showMovieRecommendations(results) {
 	$.each(results, function(index, result) {
 
-		var overviewElt = $('.templates .overview').clone();
-		var detailsElt = $('.templates .details').clone();
+		var recommendationElt = $('.templates .recommendation').clone();
 
-		overviewElt.find(".title").text(result.title);
-		overviewElt.find(".poster").attr("src", "https://image.tmdb.org/t/p/w160"+result.poster_path);
-		overviewElt.find(".rating").text(result.vote_average);
+		recommendationElt.find(".title").text(result.title).attr("href", "https://www.themoviedb.org/movie/"+result.id);
+		recommendationElt.find(".poster").attr("src", "https://image.tmdb.org/t/p/w160"+result.poster_path);
+		recommendationElt.find(".rating").text(result.vote_average);
 
-		detailsElt.find(".desc").text(result.overview);
-		detailsElt.find(".release-date").text(result.release_date);
-		detailsElt.toggleClass("hidden");
+		recommendationElt.find(".desc").text(result.overview);
+		recommendationElt.find(".release-date").text(result.release_date);
+		recommendationElt.find(".details").toggleClass("hidden");
 
-		$('<div class="recommendation"></div>').append(overviewElt).append(detailsElt).appendTo(".results");
+		// $('<div class="recommendation"></div>').append(overviewElt).append(detailsElt).appendTo(".results");
+		$(recommendationElt).appendTo('.results');
 	});
 }

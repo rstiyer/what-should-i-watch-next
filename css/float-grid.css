@@ -1,0 +1,32 @@
+body * {
+	box-sizing: border-box;
+}
+
+.col-3, .col-4, .col-6, .col-12 {
+	float: left;
+	padding-left: 1.04166666%;
+  	padding-right: 1.04166666%;
+}
+
+/* Mobile defaults */
+.col-3, .col-4, .col-6, .col-12 {
+	width: 100%;
+}
+
+@media only screen and (min-width: 640px) {
+	.col-3 {
+		width: 25%;
+	}
+
+	.col-4 {
+		width: 33.33333333%;
+	}
+
+	.col-6 {
+		width: 50%;
+	}
+
+	.col-12 {
+		width: 100%;
+	}
+}
