@@ -52,14 +52,16 @@ input#submit {
 	border: 1px solid black;
 	margin-top: 20px;
 	padding: 16px;
-	height: 438px;
 	background-color: seashell;
 	border-radius: 3px;
 }
 
+.recommendation {
+	overflow: auto;
+}
+
 .result button {
 	background-color: white;
-	/*border-color: white;*/
 }
 
 .hidden {

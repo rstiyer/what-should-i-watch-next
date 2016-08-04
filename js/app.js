@@ -60,6 +60,9 @@ function getMovieRecommendations(userInput) {
 
 function showMovieRecommendations(results) {
 	$.each(results, function(index, result) {
+		if (index % 3 === 0) {
+			$('.results').append('<div class="row"></div>');
+		}
 
 		var recommendationElt = $('.templates .recommendation').clone();
 
@@ -71,6 +74,6 @@ function showMovieRecommendations(results) {
 		recommendationElt.find(".release-date").text(result.release_date);
 		recommendationElt.find(".details").toggleClass("hidden");
 
-		$(recommendationElt).appendTo('.results');
+		$(recommendationElt).appendTo('.row:last-child');
 	});
 }
