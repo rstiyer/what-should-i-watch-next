@@ -4,7 +4,6 @@ $(function() {
 	$('#movie-search').submit(function(e) {
 		e.preventDefault();
 		var userInput = $('input[name="title"]').val();
-		console.log(userInput);
 		getMovieRecommendations(userInput);
 	});
 
@@ -12,6 +11,11 @@ $(function() {
 		$(this).parent().toggleClass("hidden");
 		$(this).parent().next().toggleClass("hidden");
 	});
+
+	$('.results').on('click', '.show-overview', function() {
+		$(this).parent().toggleClass("hidden");
+		$(this).parent().prev().toggleClass("hidden");
+	})
 
 });
 
@@ -27,7 +31,6 @@ function getMovieRecommendations(userInput) {
 	})
 	.done(function(response) {
 		var inputId = response.results[0].id;
-		console.log(inputId);
 		var baseUrl = "http://api.themoviedb.org/3/movie/" + inputId + "/similar";
 
 		$.ajax({
@@ -39,7 +42,6 @@ function getMovieRecommendations(userInput) {
 			dataType: "jsonp"
 		})
 		.done(function(response) {
-			console.log(response);
 			showMovieRecommendations(response.results);
 		})
 	})
@@ -58,13 +60,10 @@ function showMovieRecommendations(results) {
 		overviewElt.find(".poster").attr("src", "https://image.tmdb.org/t/p/w160"+result.poster_path);
 		overviewElt.find(".rating").text(result.vote_average);
 
-		console.log(result.overview);
 		detailsElt.find(".desc").text(result.overview);
 		detailsElt.find(".release-date").text(result.release_date);
 		detailsElt.toggleClass("hidden");
 
 		$('<div class="recommendation"></div>').append(overviewElt).append(detailsElt).appendTo(".results");
-		// overviewElt.appendTo(".results");
-		// detailsElt.appendTo(".results").toggleClass("hidden");
 	});
 }
