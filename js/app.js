@@ -7,6 +7,12 @@ $(function() {
 		console.log(userInput);
 		getMovieRecommendations(userInput);
 	});
+
+	$('.results').on('click', '.show-details', function() {
+		$(this).parent().toggleClass("hidden");
+		$(this).parent().next().toggleClass("hidden");
+	});
+
 });
 
 function getMovieRecommendations(userInput) {
@@ -44,6 +50,7 @@ function getMovieRecommendations(userInput) {
 
 function showMovieRecommendations(results) {
 	$.each(results, function(index, result) {
+
 		var overviewElt = $('.templates .overview').clone();
 		var detailsElt = $('.templates .details').clone();
 
@@ -54,8 +61,10 @@ function showMovieRecommendations(results) {
 		console.log(result.overview);
 		detailsElt.find(".desc").text(result.overview);
 		detailsElt.find(".release-date").text(result.release_date);
+		detailsElt.toggleClass("hidden");
 
-		overviewElt.appendTo(".results");
-		detailsElt.appendTo(".results");
+		$('<div class="recommendation"></div>').append(overviewElt).append(detailsElt).appendTo(".results");
+		// overviewElt.appendTo(".results");
+		// detailsElt.appendTo(".results").toggleClass("hidden");
 	});
 }

@@ -11,7 +11,8 @@ header {
 	border: 2px solid black;
 }
 
-main {
+
+.intro {
 	width: 50%;
 	margin: 0 auto;
 	text-align: justify;
@@ -23,8 +24,13 @@ input#title {
 
 .result {
 	border: 1px solid black;
+	width: 250px;
 }
 
 .hidden {
 	display: none;
+}
+
+.label {
+	font-weight: bold;
 }
