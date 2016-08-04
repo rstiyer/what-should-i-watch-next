@@ -22,7 +22,7 @@ $(function() {
 
 function getMovieRecommendations(userInput) {
 	$.ajax({
-		url: "http://api.themoviedb.org/3/search/movie",
+		url: "https://api.themoviedb.org/3/search/movie",
 		method: "GET",
 		data: {
 			query: userInput,
@@ -32,7 +32,7 @@ function getMovieRecommendations(userInput) {
 	})
 	.done(function(response) {
 		var inputId = response.results[0].id;
-		var baseUrl = "http://api.themoviedb.org/3/movie/" + inputId + "/similar";
+		var baseUrl = "https://api.themoviedb.org/3/movie/" + inputId + "/similar";
 
 		$.ajax({
 			url: baseUrl,
@@ -64,7 +64,6 @@ function showMovieRecommendations(results) {
 		recommendationElt.find(".release-date").text(result.release_date);
 		recommendationElt.find(".details").toggleClass("hidden");
 
-		// $('<div class="recommendation"></div>').append(overviewElt).append(detailsElt).appendTo(".results");
 		$(recommendationElt).appendTo('.results');
 	});
 }
