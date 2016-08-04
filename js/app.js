@@ -31,6 +31,10 @@ function getMovieRecommendations(userInput) {
 		dataType: "jsonp"
 	})
 	.done(function(response) {
+		if (response.total_results == 0) {
+			$('.results').append('<p>Sorry, the movie you entered could not be found. Try again with a different title!</p>');
+			return;
+		}
 		var inputId = response.results[0].id;
 		var baseUrl = "https://api.themoviedb.org/3/movie/" + inputId + "/similar";
 
@@ -45,9 +49,12 @@ function getMovieRecommendations(userInput) {
 		.done(function(response) {
 			showMovieRecommendations(response.results);
 		})
+		.fail(function(jqXHR, error) {
+			$('.results').append('<p>Sorry, the movie you entered could not be found. Try again with a different title!</p>');
+		});
 	})
-	.fail(function() {
-		// Return error text
+	.fail(function(jqXHR, error) {
+		$('.results').append('<p>Sorry, the movie you entered could not be found. Try again with a different title!</p>');
 	});
 }
 
