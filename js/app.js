@@ -60,6 +60,8 @@ function getMovieRecommendations(userInput) {
 
 function showMovieRecommendations(results) {
 	$.each(results, function(index, result) {
+		console.log(result);
+
 		if (index % 3 === 0) {
 			$('.results').append('<div class="row"></div>');
 		}
@@ -67,7 +69,13 @@ function showMovieRecommendations(results) {
 		var recommendationElt = $('.templates .recommendation').clone();
 
 		recommendationElt.find(".title").text(result.title).attr("href", "https://www.themoviedb.org/movie/"+result.id);
-		recommendationElt.find(".poster").attr("src", "https://image.tmdb.org/t/p/w160"+result.poster_path);
+
+		if (result.poster_path !== null) {
+			recommendationElt.find(".poster").attr("src", "https://image.tmdb.org/t/p/w160"+result.poster_path);
+		} else {
+			recommendationElt.find(".poster").attr("src","http://www.fillmurray.com/200/300");
+		}
+
 		recommendationElt.find(".rating").text(result.vote_average);
 
 		recommendationElt.find(".desc").text(result.overview);
