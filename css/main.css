@@ -54,7 +54,6 @@ input#submit {
 	padding: 16px;
 	background-color: seashell;
 	border-radius: 3px;
-	flex: 1;
 	box-shadow: 2px 2px 4px #999;
 	transition: all 0.4s ease-in-out;
 }
@@ -69,7 +68,6 @@ input#submit {
 
 .recommendation {
 	overflow: auto;
-	display: flex;
 }
 
 .result button {
@@ -97,5 +95,13 @@ input#submit {
 @media only screen and (min-width: 640px) {
 	.intro {
 		width: 70%;
+	}
+
+	.result {
+		flex: 1;
+	}
+
+	.recommendation {
+		display: flex;
 	}
 }
